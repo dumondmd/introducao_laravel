@@ -18,8 +18,9 @@ class CreateCursosTable extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->string('imagem');
-            $table->decimal('valor', 5,2);
-            $table->enum('publicado', ['sim', 'nao'])->default('nao');
+            $table->decimal('valor',5,2);
+            $table->enum('publicado',['sim','nao'])->default('nao');
+
             $table->timestamps();
         });
     }

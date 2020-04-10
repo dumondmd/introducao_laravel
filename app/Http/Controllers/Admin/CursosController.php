@@ -17,4 +17,32 @@ class CursosController extends Controller
     public function adicionar() {
     	return view('admin.cursos.adicionar');
     }
+
+    public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      if(isset($dados['publicado'])){
+        $dados['publicado'] = 'Sim';
+      }else{
+        $dados['publicado'] = 'Nao';
+      }
+     
+
+      if($req->hasFile('imagem')){
+        $imagem = $req->file('imagem');
+        $num = rand(1111,9999);
+        $dir = "img/cursos/";
+        $ex = $imagem->guessClientExtension();
+        $nomeImagem = "imagem_".$num.".".$ex;
+        $imagem->move($dir,$nomeImagem);
+        $dados['imagem'] = $dir."/".$nomeImagem;
+      }
+
+      Curso::create($dados);
+
+      return redirect()->route('admin.cursos');
+
+
+    }
 }
