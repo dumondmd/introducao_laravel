@@ -13,4 +13,8 @@ class CursosController extends Controller
     	$registros = Curso::all();
     	return view('admin.cursos.index', compact('registros'));
     }
+
+    public function adicionar() {
+    	return view('admin.cursos.adicionar');
+    }
 }
