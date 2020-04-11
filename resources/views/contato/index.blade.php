@@ -1,16 +1,15 @@
 @extends('layout.site')
 
-@section('titulo', 'Contatos')
+@section('titulo','Contatos')
 
 @section('conteudo')
+    <h3>Essa é a view Index</h3>
 
-	<h3>Essa é a view INDEX</h3>
+    @foreach($contatos as $contato)
+        <p>{{ $contato->nome }}</p>
+        <p>{{ $contato->tel }}</p>
 
-	@foreach($contatos as $contato)
-		<p>{{$contato->nome}}</p>
-		<p>{{$contato->tel}}</p>
-	@endforeach
+    @endforeach
 
 @endsection
-
 

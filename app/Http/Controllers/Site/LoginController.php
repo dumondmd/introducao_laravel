@@ -8,19 +8,22 @@ use Auth;
 
 class LoginController extends Controller
 {
-    public function index(){
-    	return view ('login.index');
+    public function index()
+    {
+      return view('login.index');
     }
+    public function entrar(Request $req)
+    {
+      $dados = $req->all();
+      if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['senha']])){
+        return redirect()->route('admin.cursos');
+      }
 
-
-    public function entrar(Request $req){
-    	return redirect()->route('login.index');
-
-    	$dados = $req->all();
-    	if(Auth::attempt(['email'=>$dados['email'], 'password'=>$dados['senha']])){
-    		return redirect()->route('admin.cursos');
-    	}
-
-    	return redirect()->route('login.index');
+      return redirect()->route('login.index');
+    }
+    public function sair()
+    {
+      Auth::logout();
+      return redirect()->route('site.home');
     }
 }
