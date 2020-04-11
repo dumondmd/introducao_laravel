@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Site\HomeController@index')->name('site.home');
 
 Route::get('/contato/{id?}', ['uses'=>'ContatoController@index']);
 
