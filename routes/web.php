@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Site\HomeController@index')->name('site.home');
+Route::get('/login', 'Site\LoginController@index')->name('site.login');
+Route::post('/login/entrar', 'Site\LoginController@entrar')->name('site.login.entrar');
 
 Route::get('/contato/{id?}', ['uses'=>'ContatoController@index']);
 
